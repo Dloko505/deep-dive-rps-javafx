@@ -1,0 +1,16 @@
+GridPane {
+  -fx-alignment: top-center;
+}
+
+#iterationsLabel {
+  -fx-font-weight: bold;
+  -fx-alignment: center;
+  -fx-text-alignment: center;
+}
+
+ScrollPane {
+  -fx-pref-width: 600;
+  -fx-pref-height: 600;
+  -fx-hbar-policy: NEVER;
+  -fx-vbar-policy: NEVER;
+}
