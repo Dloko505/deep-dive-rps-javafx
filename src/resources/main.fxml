@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import edu.cnm.deepdive.rps.view.TerrainView?>
+<GridPane
+  xmlns="http://javafx.com/javafx"
+  xmlns:fx="http://javafx.com/fxml"
+  fx:controller="edu.cnm.deepdive.rps.controller.Controller">
+
+  <padding>
+    <Insets
+      top="10"
+      left="10"
+      bottom="10"
+      right="10"/>
+  </padding>
+
+  <columnConstraints>
+    <ColumnConstraints
+      percentWidth="33.3"/>
+    <ColumnConstraints
+      percentWidth="33.4"/>
+  </columnConstraints>
+
+  <rowConstraints>
+    <RowConstraints
+      minHeight="24"
+      maxHeight="25" />
+    <RowConstraints
+      minHeight="600"
+      maxHeight="600" />
+  </rowConstraints>
+
+  <CheckBox
+    fx:id="fitCheckbox"
+    text="%fit_to_Container"
+    selected="false"
+    GridPane.rowIndex="0"
+    GridPane.columnIndex="0"
+    GridPane.valignment="BASELINE"
+    GridPane.halignment="LEFT"
+    onAction="#fitView" />
+
+  <Text
+    fx:id="iterationsLabel"
+    GridPane.rowIndex="0"
+    GridPane.columnIndex="1"
+    GridPane.valignment="BASELINE"
+    GridPane.halignment="CENTER"
+    text="%iterations_text"/>
+
+  <ScrollPane
+    fx:id="viewScroller"
+    GridPane.rowIndex="1"
+    GridPane.columnIndex="0"
+    GridPane.columnSpan="3"
+    GridPane.halignment="CENTER"
+    GridPane.valignment="TOP"
+    minWidth="600"
+    maxWidth="600"
+    minHeight="600"
+    maxHeight="600"
+    hbarPolicy="NEVER"
+    vbarPolicy="NEVER">
+
+    <TerrainView
+      fx:id="terrainView"
+      width="1200"
+      height="1200" />
+
+  </ScrollPane>
+
+  <Slider
+    fx:id="speedSlider"
+    min="0"
+    max="10"
+    majorTickUnit="1"
+    minorTickCount="0"
+    snapToTicks="true"
+    showTickMarks="true"
+    showTickLabels="false"
+    blockIncrement="1"
+    GridPane.rowIndex="3"
+    GridPane.columnIndex="0"
+    GridPane.halignment="CENTER"
+    GridPane.valignment="TOP"
+    maxWidth="180"
+    value="5" />
+
+  <Label
+    text="%speed_slider_text"
+    labelFor="$speedSlider"
+    mnemonicParsing="true"
+    GridPane.rowIndex="2"
+    GridPane.columnIndex="0"
+    GridPane.halignment="CENTER"
+    GridPane.valignment="BOTTOM" />
+
+  <Slider
+    fx:id="mixingSlider"
+    min="0"
+    max="100"
+    majorTickUnit="10"
+    minorTickCount="0"
+    snapToTicks="true"
+    showTickMarks="true"
+    showTickLabels="false"
+    blockIncrement="10"
+    value="0"
+    maxWidth="180"
+    GridPane.rowIndex="3"
+    GridPane.columnIndex="1"
+    GridPane.halignment="CENTER"
+    GridPane.valignment="TOP" />
+
+  <Label
+    text="%mixing_slider_text"
+    labelFor="$mixingSlider"
+    mnemonicParsing="true"
+    GridPane.rowIndex="2"
+    GridPane.columnIndex="1"
+    GridPane.halignment="CENTER"
+    GridPane.valignment="BOTTOM" />
+
+  <Button
+    fx:id="start"
+    GridPane.rowIndex="4"
+    GridPane.columnIndex="0"
+    GridPane.halignment="CENTER"
+    prefWidth="100"
+    text="%run_text"
+    onAction="#start" />
+
+  <Button
+    fx:id="stop"
+    GridPane.rowIndex="4"
+    GridPane.columnIndex="1"
+    GridPane.halignment="CENTER"
+    prefWidth="100"
+    text="%stop_text"
+    disable="true"
+    onAction="#stop" />
+
+  <Button
+    fx:id="reset"
+    GridPane.rowIndex="4"
+    GridPane.columnIndex="2"
+    GridPane.halignment="CENTER"
+    prefWidth="100"
+    text="%reset_text"
+    onAction="#reset" />
+
+</GridPane>
