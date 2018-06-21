@@ -4,6 +4,7 @@ import java.util.Random;
 
 public enum Breed {
   ROCK, PAPER,SCISSORS;
+
   public Breed play(Breed opponent) {
     Breed victor = this;
     switch (this) {

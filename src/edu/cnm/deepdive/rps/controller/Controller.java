@@ -42,8 +42,6 @@ public class Controller {
 
   private double defaultViewHeight;
   private double defaultViewWidth;
-  private double fitViewHeight;
-  private double fitViewWidth;
   private String iterationFormat;
   private Terrain terrain;
   private boolean running = false;
@@ -56,8 +54,6 @@ public class Controller {
     terrain = new Terrain(new Random());
     defaultViewHeight = terrainView.getHeight();
     defaultViewWidth = terrainView.getWidth();
-    fitViewHeight = viewScroller.getPrefHeight();
-    fitViewWidth = viewScroller.getPrefWidth();
     iterationFormat = iterationsLabel.getText();
     terrainView.setSource(terrain.getCells());
     draw();
@@ -67,8 +63,8 @@ public class Controller {
   @FXML
   private void fitView(ActionEvent actionEvent) {
     if (fitCheckbox.isSelected()) {
-      terrainView.setWidth(fitViewWidth);
-      terrainView.setHeight(fitViewHeight);
+      terrainView.setWidth(viewScroller.getWidth() - 1);
+      terrainView.setHeight(viewScroller.getHeight() - 1);
     } else {
       terrainView.setWidth(defaultViewWidth);
       terrainView.setHeight(defaultViewHeight);
@@ -125,9 +121,8 @@ public class Controller {
     @Override
     public void run() {
       while (running) {
-        // TODO invoke mixing of method of model, using mixingSlider.getValue() to
-        //control how often/ how many pairs mixed.
         synchronized (lock) {
+          terrain.mix((int) mixingSlider.getValue());
           terrain.iterate(STEPS_PER_ITERATION);
         }
         try {
